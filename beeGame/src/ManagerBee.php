@@ -4,25 +4,36 @@ declare(strict_types=1);
 
 namespace php_exercices;
 
+use php_exercices\Entity\InterfaceBee;
 use php_exercices\Entity\QueenBee;
-use php_exercices\Entity\WorkerBee;
-use php_exercices\Entity\DroneBee;
 
 final class ManagerBee
 {
+    private $queen;
+    private $worker;
+    private $drone;
+
+    public function __construct(
+        InterfaceBee $queen,
+        InterfaceBee $worker,
+        InterfaceBee $drone
+    ) {
+        $this->queen = $queen;
+        $this->worker = $worker;
+        $this->drone = $drone;
+    }
+
     public function getQueen():QueenBee
     {
-        $bee = new QueenBee();
-        return $bee;
+        return $this->queen;
     }
 
     public function getWorkers(int $count):array
     {
         $workers = [];
-        $bee = new WorkerBee();
         
         for ($i = 0; $i < $count; $i++) {
-            $workers[] = clone($bee);
+            $workers[] = clone($this->worker);
         }
 
         return $workers;
@@ -31,10 +42,9 @@ final class ManagerBee
     public function getDrones(int $count):array
     {
         $drones = [];
-        $bee = new DroneBee();
-        
+
         for ($i = 0; $i < $count; $i++) {
-            $drones[] = clone($bee);
+            $drones[] = clone($this->drone);
         }
 
         return $drones;

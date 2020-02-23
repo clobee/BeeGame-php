@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use php_exercices\Entity\QueenBee;
 use php_exercices\Entity\DroneBee;
 use php_exercices\Entity\WorkerBee;
 use php_exercices\ManagerBee;
@@ -9,9 +10,24 @@ use PHPUnit\Framework\TestCase;
 
 final class ManagerBeeTest extends TestCase
 {
+    private $managerBee;
+
+    public function setUp():void {
+        $this->managerBee = new ManagerBee(
+            new QueenBee,
+            new WorkerBee,
+            new DroneBee
+        );
+    }
+
     public function test_produce_queen()
     {
-        $bee = new ManagerBee();
+        $bee = $this->managerBee;
+
+        $this->assertInstanceOf(
+            QueenBee::class,
+            $bee->getQueen()
+        );
 
         $this->assertSame(
             $bee->getQueen()->getLifespan(),
@@ -24,11 +40,14 @@ final class ManagerBeeTest extends TestCase
      */
     public function test_produce_workers($data)
     {
-        $bee = new ManagerBee();
+        $bee = $this->managerBee;
         $workers = $bee->getWorkers($data['count']);
 
         foreach ($workers as $worker) {
-            $this->assertInstanceOf(WorkerBee::class, $worker);
+            $this->assertInstanceOf(
+                WorkerBee::class,
+                $worker
+            );
         }
 
         $this->assertSame(
@@ -42,11 +61,14 @@ final class ManagerBeeTest extends TestCase
      */
     public function test_produce_drones($data)
     {
-        $bee = new ManagerBee();
+        $bee = $this->managerBee;
         $drones = $bee->getDrones($data['count']);
 
         foreach ($drones as $drone) {
-            $this->assertInstanceOf(DroneBee::class, $drone);
+            $this->assertInstanceOf(
+                DroneBee::class,
+                $drone
+            );
         }
 
         $this->assertSame(
@@ -55,7 +77,7 @@ final class ManagerBeeTest extends TestCase
         );
     }
 
-    public function provide_bees()
+    public function provide_bees():array
     {
         return [[
             [
