@@ -1,4 +1,6 @@
 vendor/*
+composer.lock
+
 
 ### OSX ###
 .DS_Store
