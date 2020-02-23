@@ -7,7 +7,7 @@ namespace php_exercices;
 use php_exercices\Entity\InterfaceBee;
 use php_exercices\Entity\QueenBee;
 
-final class ManagerBee
+final class FactoryBee
 {
     private $queen;
     private $worker;

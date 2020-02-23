@@ -110,3 +110,6 @@ We have 3 classes entities (Queen, Worker and Drone) and an interface Bee. All t
 
 Unfortunately, we still don't have a game... 
 
+### The game
+
+Let's create the class `factoryBee` that will be responsible for providing the bees. 

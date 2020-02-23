@@ -5,15 +5,15 @@ declare(strict_types=1);
 use php_exercices\Entity\QueenBee;
 use php_exercices\Entity\DroneBee;
 use php_exercices\Entity\WorkerBee;
-use php_exercices\ManagerBee;
+use php_exercices\factoryBee;
 use PHPUnit\Framework\TestCase;
 
-final class ManagerBeeTest extends TestCase
+final class FactoryBeeTest extends TestCase
 {
-    private $managerBee;
+    private $factoryBee;
 
     public function setUp():void {
-        $this->managerBee = new ManagerBee(
+        $this->factoryBee = new factoryBee(
             new QueenBee,
             new WorkerBee,
             new DroneBee
@@ -22,7 +22,7 @@ final class ManagerBeeTest extends TestCase
 
     public function test_produce_queen()
     {
-        $bee = $this->managerBee;
+        $bee = $this->factoryBee;
 
         $this->assertInstanceOf(
             QueenBee::class,
@@ -40,7 +40,7 @@ final class ManagerBeeTest extends TestCase
      */
     public function test_produce_workers($data)
     {
-        $bee = $this->managerBee;
+        $bee = $this->factoryBee;
         $workers = $bee->getWorkers($data['count']);
 
         foreach ($workers as $worker) {
@@ -61,7 +61,7 @@ final class ManagerBeeTest extends TestCase
      */
     public function test_produce_drones($data)
     {
-        $bee = $this->managerBee;
+        $bee = $this->factoryBee;
         $drones = $bee->getDrones($data['count']);
 
         foreach ($drones as $drone) {
