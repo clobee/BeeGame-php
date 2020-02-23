@@ -70,8 +70,6 @@ There are three types of bees in this game:
     When a Drone Bee is hit, 12 Hit Points are deducted from his lifespan.
     There are 8 Drone Bees.
 
-_⚡ I understand that I will need a minimum of 3 classes (Queen, Worker and Drone) and an interface Bee. All type of bees have a lifespan and some sort of damage cost._
-
 _⚡ The Queen kills all Bees situation requires some sort notification implementation, for that I will use the Observer pattern._
 
 Let's do the magic...
@@ -100,3 +98,15 @@ src/Entity/DroneBee.php
 src/Entity/QueenBee.php
 src/Entity/WorkerBee.php
 ```
+
+At this point, we have all our entities doing most of the requirements items: 
+
+We have 3 classes entities (Queen, Worker and Drone) and an interface Bee. All type of bees have a lifespan, a hit cost and a name:
+
+```
+    A Bee have a lifespan of XX Hit Points.
+    When it is hit, XX Hit Points are deducted from the lifespan.
+```
+
+Unfortunately, we still don't have a game... 
+
