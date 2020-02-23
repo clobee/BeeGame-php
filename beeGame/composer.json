@@ -1,0 +1,9 @@
+{
+    "name": "php_exercices/bee-game",
+    "description": "The bee game by Clobee",
+    "type": "project",
+    "license": "free",
+    "require": {
+        "php": "^7.3"
+    }
+}
