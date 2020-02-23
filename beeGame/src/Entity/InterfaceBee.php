@@ -6,5 +6,5 @@ namespace php_exercices\Entity;
 
 interface InterfaceBee
 {
-
+    public function getName():string;
 }
