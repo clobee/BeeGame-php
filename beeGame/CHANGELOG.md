@@ -33,25 +33,22 @@ I want packages that are for PHP `^7.3` so I can go ahead and update my json wit
 }
 ```
 
+I am also adding the folder that will host my code 
+
+```json
+{
+    "autoload": {
+        "psr-4": {
+            "php_exercices\\": "src/"
+        }
+    },
+}
+```
+
 At this point I can go ahead and add an `index.php` file to the project.  
 This will be the entry point of the application.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-For this exercice, I am going to run through how I solve the PHP Coding Test "The Bee Game" (with an explanation of each steps).
-
-See the document CHANGELOG.md for more details on the steps.
 
 **The exercice**
 
@@ -84,6 +81,11 @@ composer install
 
 //@todo
 
+### Let's write some basic code
 
+For this project I need phpunit
 
+```bash
+composer require --dev phpunit/phpunit ^9.0
+```
 

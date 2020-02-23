@@ -31,11 +31,11 @@ ______________
 
 **Installation**
 
-composer install
+`composer install`
 
 **Tests**
 
-//@todo
+`composer test`
 
 
 

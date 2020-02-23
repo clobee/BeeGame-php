@@ -3,7 +3,20 @@
     "description": "The bee game by Clobee",
     "type": "project",
     "license": "free",
+    "autoload": {
+        "psr-4": {
+            "php_exercices\\": "src/"
+        }
+    },
     "require": {
         "php": "^7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "scripts": {
+        "test": [
+            "./vendor/phpunit/phpunit/phpunit"
+        ]
     }
 }
