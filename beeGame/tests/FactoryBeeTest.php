@@ -35,6 +35,66 @@ final class FactoryBeeTest extends TestCase
         );
     }
 
+    public function test_queen_death_kills_all_workers()
+    {
+        $bee = $this->factoryBee;
+
+        $queen = $bee->getQueen();
+        $workers = $bee->getWorkers(3);
+
+        foreach ($workers as $worker) {
+            $queen->attach($worker);
+        }
+        
+        do {
+            $queen->hit();
+        } while($queen->getLifespan() > 0);
+
+        $queen->notify();
+
+        $this->assertEquals(
+            $queen->getLifespan(),
+            0
+        );
+
+        foreach($workers as $worker) {
+            $this->assertEquals(
+                $worker->getLifespan(),
+                0
+            );
+        }
+    }
+
+    public function test_queen_death_kills_all_drones()
+    {
+        $bee = $this->factoryBee;
+
+        $queen = $bee->getQueen();
+        $drones = $bee->getDrones(3);
+
+        foreach ($drones as $drone) {
+            $queen->attach($drone);
+        }
+        
+        do {
+            $queen->hit();
+        } while($queen->getLifespan() > 0);
+
+        $queen->notify();
+
+        $this->assertEquals(
+            $queen->getLifespan(),
+            0
+        );
+
+        foreach($drones as $drone) {
+            $this->assertEquals(
+                $drone->getLifespan(),
+                0
+            );
+        }
+    }
+    
     /**
      * @dataProvider provide_bees()
      */
@@ -70,7 +130,7 @@ final class FactoryBeeTest extends TestCase
                 $drone
             );
         }
-
+        $drones = $bee->getDrones(3);
         $this->assertSame(
             $data['result'],
             count($drones)

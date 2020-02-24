@@ -21,6 +21,10 @@ abstract class AbstractBee
         return $this->hitCost;
     }
 
+    public function die():void {
+        $this->setLifespan(0);
+    }
+
     private function setLifespan(int $lifespan):void
     {
         $this->lifespan = $lifespan;

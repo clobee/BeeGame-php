@@ -15,5 +15,6 @@ final class DroneBee extends AbstractBee implements InterfaceBee, SplObserver
     public function update(\SplSubject $subject):void
     {
         echo "{$this->name}: {$subject->getName()} is dead!";
+        $this->die();
     }
 }
