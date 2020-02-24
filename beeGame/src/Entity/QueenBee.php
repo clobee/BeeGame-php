@@ -38,4 +38,10 @@ final class QueenBee extends AbstractBee implements InterfaceBee, SplSubject
             $observer->update($this);
         }
     }
+
+    public function die():void
+    {
+        parent::die();
+        $this->notify();
+    }
 }

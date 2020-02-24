@@ -42,15 +42,7 @@ final class FactoryBeeTest extends TestCase
         $queen = $bee->getQueen();
         $workers = $bee->getWorkers(3);
 
-        foreach ($workers as $worker) {
-            $queen->attach($worker);
-        }
-        
-        do {
-            $queen->hit();
-        } while($queen->getLifespan() > 0);
-
-        $queen->notify();
+        $queen->die();
 
         $this->assertEquals(
             $queen->getLifespan(),
@@ -72,15 +64,7 @@ final class FactoryBeeTest extends TestCase
         $queen = $bee->getQueen();
         $drones = $bee->getDrones(3);
 
-        foreach ($drones as $drone) {
-            $queen->attach($drone);
-        }
-        
-        do {
-            $queen->hit();
-        } while($queen->getLifespan() > 0);
-
-        $queen->notify();
+        $queen->die();
 
         $this->assertEquals(
             $queen->getLifespan(),
@@ -94,7 +78,7 @@ final class FactoryBeeTest extends TestCase
             );
         }
     }
-    
+
     /**
      * @dataProvider provide_bees()
      */
@@ -130,7 +114,7 @@ final class FactoryBeeTest extends TestCase
                 $drone
             );
         }
-        $drones = $bee->getDrones(3);
+
         $this->assertSame(
             $data['result'],
             count($drones)

@@ -33,7 +33,8 @@ final class FactoryBee
         $workers = [];
         
         for ($i = 0; $i < $count; $i++) {
-            $workers[] = clone($this->worker);
+            $workers[$i] = clone($this->worker);
+            $this->queen->attach($workers[$i]);
         }
 
         return $workers;
@@ -44,7 +45,8 @@ final class FactoryBee
         $drones = [];
 
         for ($i = 0; $i < $count; $i++) {
-            $drones[] = clone($this->drone);
+            $drones[$i] = clone($this->drone);
+            $this->queen->attach($drones[$i]);
         }
 
         return $drones;

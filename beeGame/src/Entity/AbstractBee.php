@@ -21,7 +21,8 @@ abstract class AbstractBee
         return $this->hitCost;
     }
 
-    public function die():void {
+    public function die():void
+    {
         $this->setLifespan(0);
     }
 
@@ -34,10 +35,10 @@ abstract class AbstractBee
     {
         $newLifespan = $this->getLifespan() - $this->getHitCost();
 
-        if ($newLifespan < 0) {
-            $newLifespan = 0;
+        if ($newLifespan > 0) {
+            $this->setLifespan($newLifespan);
+        } else {
+            $this->die();
         }
-        
-        $this->setLifespan($newLifespan);
     }
 }
