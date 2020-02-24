@@ -6,7 +6,8 @@ namespace php_exercices\Entity;
 
 abstract class AbstractBee
 {
-    public function getName():string {
+    public function getName():string
+    {
         return $this->name;
     }
 
@@ -29,7 +30,7 @@ abstract class AbstractBee
     {
         $newLifespan = $this->getLifespan() - $this->getHitCost();
 
-        if($newLifespan < 0) {
+        if ($newLifespan < 0) {
             $newLifespan = 0;
         }
         
