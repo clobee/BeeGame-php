@@ -2,17 +2,23 @@
 
 declare(strict_types=1);
 
+namespace php_exercices_tests;
+
 use php_exercices\Entity\QueenBee;
 use php_exercices\Entity\DroneBee;
 use php_exercices\Entity\WorkerBee;
-use php_exercices\factoryBee;
+use php_exercices\FactoryBee;
 use PHPUnit\Framework\TestCase;
 
 final class FactoryBeeTest extends TestCase
 {
+    /**
+     * @var \php_exercices\FactoryBee
+     */
     private $factoryBee;
 
-    public function setUp():void {
+    public function setUp():void
+    {
         $this->factoryBee = new factoryBee(
             new QueenBee,
             new WorkerBee,
@@ -20,7 +26,7 @@ final class FactoryBeeTest extends TestCase
         );
     }
 
-    public function test_produce_queen()
+    public function test_produce_queen():void
     {
         $bee = $this->factoryBee;
 
@@ -29,13 +35,13 @@ final class FactoryBeeTest extends TestCase
             $bee->getQueen()
         );
 
-        $this->assertSame(
+        $this->assertEquals(
             $bee->getQueen()->getLifespan(),
             100
         );
     }
 
-    public function test_queen_death_kills_all_workers()
+    public function test_queen_death_kills_all_workers():void
     {
         $bee = $this->factoryBee;
 
@@ -49,7 +55,7 @@ final class FactoryBeeTest extends TestCase
             0
         );
 
-        foreach($workers as $worker) {
+        foreach ($workers as $worker) {
             $this->assertEquals(
                 $worker->getLifespan(),
                 0
@@ -57,7 +63,7 @@ final class FactoryBeeTest extends TestCase
         }
     }
 
-    public function test_queen_death_kills_all_drones()
+    public function test_queen_death_kills_all_drones():void
     {
         $bee = $this->factoryBee;
 
@@ -71,7 +77,7 @@ final class FactoryBeeTest extends TestCase
             0
         );
 
-        foreach($drones as $drone) {
+        foreach ($drones as $drone) {
             $this->assertEquals(
                 $drone->getLifespan(),
                 0
@@ -82,7 +88,7 @@ final class FactoryBeeTest extends TestCase
     /**
      * @dataProvider provide_bees()
      */
-    public function test_produce_workers($data)
+    public function test_produce_workers(array $data):void
     {
         $bee = $this->factoryBee;
         $workers = $bee->getWorkers($data['count']);
@@ -94,7 +100,7 @@ final class FactoryBeeTest extends TestCase
             );
         }
 
-        $this->assertSame(
+        $this->assertEquals(
             $data['result'],
             count($workers)
         );
@@ -103,7 +109,7 @@ final class FactoryBeeTest extends TestCase
     /**
      * @dataProvider provide_bees()
      */
-    public function test_produce_drones($data)
+    public function test_produce_drones(array $data):void
     {
         $bee = $this->factoryBee;
         $drones = $bee->getDrones($data['count']);
@@ -115,7 +121,7 @@ final class FactoryBeeTest extends TestCase
             );
         }
 
-        $this->assertSame(
+        $this->assertEquals(
             $data['result'],
             count($drones)
         );

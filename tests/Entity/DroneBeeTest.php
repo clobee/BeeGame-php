@@ -2,29 +2,31 @@
 
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
-use php_exercices\Entity\QueenBee;
+namespace php_exercices_tests\Entity;
 
-final class QueenBeeTest extends TestCase
+use php_exercices\Entity\DroneBee;
+use PHPUnit\Framework\TestCase;
+
+final class DroneBeeTest extends TestCase
 {
-    public function test_worker_has_lifespan()
+    public function test_has_lifespan():void
     {
-        $bee = new QueenBee();
+        $bee = new DroneBee();
 
         $this->assertSame(
             $bee->getLifespan(),
-            100
+            50
         );
     }
 
     /**
      * @dataProvider provide_lifespan_damage_data()
      */
-    public function test_worker_dammage_lifespan($data)
+    public function test_dammage_lifespan(array $data):void
     {
-        $bee = new QueenBee();
+        $bee = new DroneBee();
 
-        for($i=0; $i < $data['hit_count']; $i++) {
+        for ($i=0; $i < $data['hit_count']; $i++) {
             $bee->hit();
         }
 
@@ -34,22 +36,23 @@ final class QueenBeeTest extends TestCase
         );
     }
 
-    public function provide_lifespan_damage_data() {
+    public function provide_lifespan_damage_data():array
+    {
         return [[
             [
-                'lifespan' => 100,
+                'lifespan' => 50,
                 'hit_count' => 4,
-                'result' => 68
+                'result' => 2
             ],
             [
-                'lifespan' => 100,
+                'lifespan' => 50,
                 'hit_count' => 2,
-                'result' => 84
+                'result' => 26
             ],
             [
-                'lifespan' => 100,
+                'lifespan' => 50,
                 'hit_count' => 1,
-                'result' => 92
+                'result' => 38
             ]
         ]];
     }
@@ -57,11 +60,11 @@ final class QueenBeeTest extends TestCase
     /**
      * @dataProvider provide_lifespan_negative_damage_data()
      */
-    public function test_worker_negative_dammage_returns_0_lifespan($data)
+    public function test_negative_dammage_returns_0_lifespan(array $data):void
     {
-        $bee = new QueenBee();
+        $bee = new DroneBee();
 
-        for($i=0; $i < $data['hit_count']; $i++) {
+        for ($i=0; $i < $data['hit_count']; $i++) {
             $bee->hit();
         }
 
@@ -71,20 +74,21 @@ final class QueenBeeTest extends TestCase
         );
     }
 
-    public function provide_lifespan_negative_damage_data() {
+    public function provide_lifespan_negative_damage_data():array
+    {
         return [[
             [
-                'lifespan' => 100,
+                'lifespan' => 50,
                 'hit_count' => 20,
                 'result' => 0
             ],
             [
-                'lifespan' => 100,
+                'lifespan' => 50,
                 'hit_count' => 2,
-                'result' => 84
+                'result' => 26
             ],
             [
-                'lifespan' => 100,
+                'lifespan' => 50,
                 'hit_count' => 100,
                 'result' => 0
             ]

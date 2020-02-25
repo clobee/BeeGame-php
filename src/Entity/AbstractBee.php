@@ -6,6 +6,21 @@ namespace php_exercices\Entity;
 
 abstract class AbstractBee
 {
+        /**
+     * @var int
+     */
+    protected $lifespan;
+
+    /**
+     * @var int
+     */
+    protected $hitCost;
+
+    /**
+     * @var string
+     */
+    protected $name;
+
     public function getName():string
     {
         return $this->name;

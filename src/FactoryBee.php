@@ -4,19 +4,31 @@ declare(strict_types=1);
 
 namespace php_exercices;
 
-use php_exercices\Entity\InterfaceBee;
 use php_exercices\Entity\QueenBee;
+use php_exercices\Entity\WorkerBee;
+use php_exercices\Entity\DroneBee;
 
 final class FactoryBee
 {
+    /**
+     * @var \php_exercices\Entity\QueenBee
+     */
     private $queen;
+
+    /**
+     * @var \php_exercices\Entity\WorkerBee
+     */
     private $worker;
+
+    /**
+     * @var \php_exercices\Entity\DroneBee
+     */
     private $drone;
 
     public function __construct(
-        InterfaceBee $queen,
-        InterfaceBee $worker,
-        InterfaceBee $drone
+        QueenBee $queen,
+        WorkerBee $worker,
+        DroneBee $drone
     ) {
         $this->queen = $queen;
         $this->worker = $worker;
