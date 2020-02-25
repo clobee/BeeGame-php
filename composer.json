@@ -1,0 +1,34 @@
+{
+    "name": "php_exercices/bee-game",
+    "description": "A little implentation of the bee game test with PHP",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "php_exercices\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "php_exercices_tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "phpstan/phpstan": "^0.12.11"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        }
+    },
+    "scripts": {
+        "test": [
+            "./vendor/phpunit/phpunit/phpunit",
+            "./vendor/phpstan/phpstan/phpstan analyse -l max src tests"
+        ]
+    }
+}
