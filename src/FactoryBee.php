@@ -10,6 +10,9 @@ use php_exercices\Entity\DroneBee;
 
 final class FactoryBee
 {
+    const WORKERS_COUNT = 5;
+    const DRONES_COUNT = 8;
+
     /**
      * @var \php_exercices\Entity\QueenBee
      */
@@ -62,5 +65,24 @@ final class FactoryBee
         }
 
         return $drones;
+    }
+
+    public function getColony(): array
+    {
+        $bees = [];
+
+        $bees['queen'] = $this->getQueen();
+
+        $workers = $this->getWorkers(self::WORKERS_COUNT);
+        foreach ($workers as $key => $worker) {
+            $bees['workers.' . $key] = $worker;
+        }
+
+        $drones = $this->getDrones(self::DRONES_COUNT);
+        foreach ($drones as $key => $drone) {
+            $bees['drones.' . $key] = $drone;
+        }
+
+        return $bees;
     }
 }

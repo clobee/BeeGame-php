@@ -26,6 +26,27 @@ final class FactoryBeeTest extends TestCase
         );
     }
 
+    public function test_produce_colony(): void
+    {
+        $bee = $this->factoryBee;
+        $colony = $bee->getColony();
+
+        $this->assertArrayHasKey(
+            'queen',
+            $colony
+        );
+
+        $this->assertArrayHasKey(
+            'drones.0',
+            $colony
+        );
+
+        $this->assertArrayHasKey(
+            'workers.0',
+            $colony
+        );
+    }
+
     public function test_produce_queen():void
     {
         $bee = $this->factoryBee;
