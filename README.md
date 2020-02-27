@@ -30,6 +30,12 @@ ______________
 
 `composer install`
 
+## Usage
+
+Start the php built-in server `php -S localhost:8888` and visit `http://localhost:8888`.  
+
+Refresh the page to start a new round...
+
 ## Tests
 
 `composer test`

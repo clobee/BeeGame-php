@@ -8,6 +8,8 @@ use php_exercices\FactoryBee;
 
 final class Game
 {
+    const HIT_RATIO = 30;
+
     /**
      * @var \php_exercices\FactoryBee
      */
@@ -70,10 +72,9 @@ final class Game
     private function multiplyEachHit(array $randomColony): array
     {
         $hitList = [];
-        $limit = count($randomColony)-1;
 
         foreach ($randomColony as $bee) {
-            $rand = random_int(1, $limit);
+            $rand = random_int(1, self::HIT_RATIO);
             for ($i=0; $i < $rand; $i++) {
                 $hitList[] = $bee;
             }
