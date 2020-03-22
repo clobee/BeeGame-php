@@ -2,6 +2,7 @@
 # PHP Coding Test : Bee game
 
 [![CircleCI](https://circleci.com/gh/clobee/BeeGame-php.svg?style=svg)](https://circleci.com/gh/clobee/BeeGame-php)
+[![BCH compliance](https://bettercodehub.com/edge/badge/clobee/BeeGame-php?branch=master)](https://bettercodehub.com/)
 
 ## The challenge
 
